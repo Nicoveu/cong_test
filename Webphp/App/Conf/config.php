@@ -6,7 +6,7 @@
         'DB_HOST'   => '127.0.0.1', // 服务器地址
         'DB_NAME'   => 'xuanke', // 数据库名
         'DB_USER'   => 'root', // 用户名
-        'DB_PWD'    => '111', // 密码
+        'DB_PWD'    => 'niecong25', // 密码
         'DB_PORT'   => 3306, // 端口
         'DB_PREFIX' => 'think_', // 数据库表前缀 
         //其他项目配置参数
