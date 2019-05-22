@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>网站信息</title>  
+    <link rel="stylesheet" href="/Webphp/App/Tpl/index/css/pintuer.css">
+    <link rel="stylesheet" href="/Webphp/App/Tpl/index/css/admin.css">
+    <script src="/Webphp/App/Tpl/index/js/jquery.js"></script>
+    <script src="/Webphp/App/Tpl/index/js/pintuer.js"></script>  
+</head>
+<body style="overflow-x: hidden; word-wrap:break-word;">
+
+<div class="panel admin-panel">
+	<!--<div id="topnav"><font size="5">空闲教室</font>
+			<hr color="#3333FF">
+        </div>-->
+
+    <div>  
+      <div align="left" font-size: 20px>
+	        <volist name="list['flag']" id="vo">
+	            <if condition="$vo neq 1"> {$vo}&nbsp;&nbsp;
+	            </if>	           
+	        </volist>
+        </div>
+
+   </div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,247 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>管理员首页</title>
+<style type="text/css">
+body{
+  background-color:#FFF;}
+#all{
+  background-color:#ECF5FF;
+  width:1200px;
+  height:580px;
+  margin:-30px 20px 0px;}
+#hop{
+  background-color:#66B3FF;
+  font-size:36px;
+  text-align:center;
+  margin-top:0px;
+  height:50px;
+  padding-top:10px;
+  }
+.style1{
+  font-family: "宋体";
+  text-align:center;
+  font-size: x-large;
+  background-color:#FFFCEC;
+  margin-top:0px;
+  padding-top:5px;
+  height:35px;
+  color:#000}
+.style2{
+  text-align:right;
+  margin-top:10px;
+  margin-right:10px;
+  color:#FFF;}
+#top{
+  margin-top:10px;
+  margin-right:10px;
+  top: 10px;
+  right: 10px;
+  color: #F0F;
+  float: right;
+  }
+.box{
+  background-color:#ECFFFF;
+  text-align:left;
+  width:300px;
+  margin-top:20px;
+  margin-left:20px;
+  padding-top:10px;
+  }
+#left{
+  background-color:#ECF5FF;
+  margin-left:10px;
+  margin-top:-10px;
+  width:350px;
+  height:420px;}
+#right{
+  background-color:#FFF;
+  text-align:center;
+  height: 260px;
+  width: 700px;
+  margin-top:-30px;
+  margin-right:20px;
+  color:#90F;
+  float:right;
+  position:absolute;
+  top:250px;
+  right:140px;
+  }
+#topnav{
+  text-align:center;
+  background-color:#FFF;
+  font-size:24px;
+  }
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+
+<body>
+<div id="all">
+<div  id="hop">管理员首页</div>
+<div class="style1">课程查询系统</div>
+
+<div id="left">
+<div class="box">
+        	<h3>管理员页面</h3>
+               <ul>用户信息
+			     <li>编号: {$Think.session.no}</li>
+				 <li>姓名: {$Think.session.name}</li>
+				 <li>角色: 管理员</li>
+			   </ul>
+        </div>
+
+
+<div class="box">
+        	<h3>友情链接</h3>
+            <ul>
+            	<li><a href="#">使用方法</a></li>
+                <li><a href="#">常见问题</a></li>
+                <li><a href="#">联系我们</a></li>
+            </ul>
+</div>
+		  <div class="box">
+        	<h3>生活链接</h3>
+            <ul>
+            	<li><a href="http://www.hactcm.edu.cn/">河南中医药大学</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="right">
+    <ul>
+ <!-- <li> <a href="{:U('/Manager/modify')}">修改密码</a></li>
+  <li>  <a href="{:U('/Manager/todayCourse')}">今日课程</a></li>
+  <li>  <a href="{:U('/Manager/getEmptyRoomsMa')}">今日空闲自习室查询</a></li>
+  <li>  <a href="{:U('/Manager/getEmptyRoomsMa')}">查询教师上课信息</a></li>
+  <li>  <a href="{:U('/Manager/getEmptyRoomsMa')}">查询学生上课信息</a></li>
+  <li>  <a href="{:U('/Manager/getEmptyRoomsMa')}">查询课程上课信息</a></li>
+  <li>  <a href="{:U('/Manager/getEmptyRoomsMa')}">查询班级上课信息</a></li>
+  <li>  <a href="{:U('/Manager/getEmptyRoomsMa')}">查询时间段上课信息</a></li> -->
+
+  <h3>按时间查询上课信息</h3>
+  
+  <!--<form action={:U('/Manager/modifyDo')} method="post">
+  <p>
+   请输入时间段:<br/><br/>
+  <input type="text" name="password" size="12"/><br/>
+<br/>
+ 
+    <input type="submit" value="确定" name="ok">
+    <input type="reset" value="重置" name="reset">
+   </form>
+   -->
+   <script type="text/javascript"> 
+/** 
+ * 判断年份是否为润年 
+ *  
+ * @param {Number} year 
+ */ 
+function isLeapYear(year) { 
+    return (year % 400 == 0) || (year % 4 == 0 && year % 100 != 0); 
+} 
+/** 
+ * 获取某一年份的某一月份的天数 
+ *  
+ * @param {Number} year 
+ * @param {Number} month 
+ */ 
+function getMonthDays(year, month) { 
+    return [31, null, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month] || (isLeapYear(year) ? 29 : 28); 
+} 
+function clickHandler() { 
+    var y = $('year').value, 
+        m = $('month').value, 
+        d = $('day').value; 
+ 
+    var now = new Date(y, m - 1, d), 
+        year = now.getFullYear(), 
+        month = now.getMonth(), 
+        days = now.getDate(); 
+ 
+    //那一天是那一年中的第多少天 
+    for (var i = 0; i < month; i++) { 
+        days += getMonthDays(year, i); 
+    } 
+    //那一年第一天是星期几 
+    var yearFirstDay = new Date(year, 0, 1).getDay() || 7; 
+    var week = null; 
+    if (yearFirstDay == 1) { 
+        week = Math.ceil(days/yearFirstDay); 
+    } else { 
+        days -= (7 - yearFirstDay + 1); 
+        week = Math.ceil(days/7) + 1; 
+        days = Math.max(days, 1); 
+    } 
+    alert(y + "年" + m + "月" + d + "日是" + year + "年的\n\n第" + days + "天\t第" + week + "周"); 
+ 
+} 
+</script> 
+选择日期： 
+<form action={:U('/Manager/queryOneDay')} method="post">
+	<select name="year" id="year"></select><label for="year"><font size="4">年</font></label> 
+	<select name="month" id="month"></select><label for="month"><font size="4">月</font></label> 
+	<select name="day" id="day"></select><label for="day"><font size="4">日</font></label> 
+	<button style='margin-left:30px;'>确定</button> 
+ </form>
+
+ 
+<script type="text/javascript"> 
+function $(id) { 
+    return typeof id === 'string' ? document.getElementById(id) : id; 
+} 
+function addOptions(id, start, end) { 
+    var opt = null, 
+        frag = document.createDocumentFragment(); 
+         
+    for (var i = start; i <= end ; i++) { 
+        opt = document.createElement("option"); 
+        opt.value = i; 
+        opt.innerHTML = i; 
+        frag.appendChild(opt); 
+    } 
+     
+    $(id).appendChild(frag); 
+} 
+function setDays(y, m) { 
+    addOptions('day', 1, getMonthDays(y, m - 1)); 
+} 
+function changeDays() { 
+    var val = $('day').value; 
+     
+    $('day').options.length = 0; 
+ 
+    var y = $('year').value, 
+        m = $('month').value; 
+ 
+    setDays(y, m); 
+ 
+    if (val) { 
+        var maxDay = getMonthDays(y, m - 1); 
+ 
+        $('day').value = (val > maxDay) ? maxDay : val; 
+    } 
+} 
+addOptions('year', 2012, 2050); 
+addOptions('month', 1, 12); 
+changeDays(); 
+ 
+//默认设置为本地时间 
+!(function() { 
+    var now = new Date(); 
+    $('year').value = now.getFullYear(); 
+    $('month').value = now.getMonth() + 1; 
+    $('day').value = now.getDate(); 
+})(); 
+$('year').onchange = changeDays; 
+$('month').onchange = changeDays; 
+document.getElementsByTagName("button")[0].onclick = clickHandler; 
+</script> 
+  <!--
+  <li> <a href="{:U('/Student/stuadd')}">添加学生</a></li>
+  <li> <a href="{:U('/Student/stulist')}">管理学生</a></li>
+    <li><a href="{:U('/Student/stucoulist1')}">查看学生已选课程</a>-->
+</ul></li>
+</div>
+    </div>
+</body>
+</html>
